@@ -19,24 +19,23 @@ namespace Practice2
         {
             SumHandler += Sum;
             SumHandler = SumHandler + SumHandler;
-            var result = SumHandler.GetInvocationList();
-            var newresult = 0;
-            foreach (var item in result)
+            var sum = 0;
+            TryAction(() =>
             {
-                var sumresult = item.DynamicInvoke(2, 4);
-                int newsum = (int)sumresult + (int)sumresult;
-                newresult = newsum;
-            }
-
-            Try(SumHandler, newresult);
+                var listevent = SumHandler.GetInvocationList();
+                foreach (var item in listevent)
+                {
+                    sum += (int)item.DynamicInvoke(2, 4);
+                }
+            });
+            Console.WriteLine(sum);
         }
 
-        public void Try(Func<int, int, int> func, int result)
+        public void TryAction(Action action)
         {
             try
             {
-                func = (a, b) => result = a + b;
-                Console.WriteLine(result);
+                action.Invoke();
             }
             catch (Exception ex)
             {
