@@ -6,7 +6,8 @@ namespace Practice2
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var d = new Delegate();
+            d.Run();
         }
     }
 }
