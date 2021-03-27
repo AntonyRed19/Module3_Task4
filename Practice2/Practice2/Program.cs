@@ -9,7 +9,7 @@ namespace Practice2
             var d = new Delegate();
             d.Run();
             var l = new Linq();
-            l.Mod();
+            l.Show();
         }
     }
 }
